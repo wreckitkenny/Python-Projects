@@ -1,3 +1,10 @@
+__author__ = "Wreck-it Kenny"
+__copyright__ = "Copyright 2019, The Python Project"
+__version__ = "1.0"
+__email__ = "tung.tran.3295@gmail.com"
+__status__ = "Production"
+
+# Import Modules
 import itertools
 
 
