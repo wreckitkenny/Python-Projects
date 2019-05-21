@@ -75,7 +75,8 @@ while play:
             print(f"Current player is {current_player}")
             column_choice = int(input("Choose column: "))
             row_choice = int(input("Choose row: "))
-            played = play_game(game, player=current_player, row=row_choice, column=column_choice)
+            played = play_game(game, player=current_player, row=row_choice,
+                               column=column_choice)
 
         if winner(game):
             won = True
