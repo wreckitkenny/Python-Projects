@@ -8,7 +8,8 @@ import sys
 def main():
     parser = argparse.ArgumentParser(description="5-day Weather Forecast Tool")
     parser.add_argument("api_key", type=str, help="Accuweather API key")
-    parser.add_argument("location", type=str, help="City or Country")
+    parser.add_argument("location", type=str, help="City or Country. E.g: ho-\
+chi-minh-city")
     args = parser.parse_args()
     print("""====== Current Date & Time ======
 Time: {:%X}""".format(datetime.now()))
