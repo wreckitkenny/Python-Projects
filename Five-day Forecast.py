@@ -6,6 +6,7 @@ import sys
 
 # ruhIFCofibUEirWRg5x1mMqamDMarlar
 
+
 def main():
     parser = argparse.ArgumentParser(description="5-day Weather Forecast Tool")
     parser.add_argument("api_key", type=str, help="Accuweather API key")
@@ -41,7 +42,7 @@ def five_day_forecast(args):
     print("===== 5 Days of Daily Forecasts =====")
     for i in _info["DailyForecasts"]:
         _date = str(i["Date"][8:10]) + "/" + str(i["Date"][5:7]) + "/"\
-                    + str(i["Date"][0:4])
+            + str(i["Date"][0:4])
         _maxtemp = i["Temperature"]["Maximum"]["Value"]
         _mintemp = i["Temperature"]["Minimum"]["Value"]
         print("""{}. Date: {}
