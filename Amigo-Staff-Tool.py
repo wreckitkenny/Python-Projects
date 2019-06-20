@@ -2,8 +2,8 @@
 import openpyxl
 from openpyxl.styles import Alignment, Font, Border, Side
 
-location = "C:\\Users\\Wreck-it Kenny\\Documents\\Staff list in Amigo\
- June2019.xlsx"
+location = "\\\\10.0.8.5\\Public IS\\Danh sach nhan vien Amigo\\Staff list in\
+ Amigo June2019.xlsx"
 wb = openpyxl.load_workbook(location)
 ws = wb['AMG']
 num = ws['A']
