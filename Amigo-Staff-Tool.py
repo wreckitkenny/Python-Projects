@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+__author__ = "Wreck-it Kenny"
+__copyright__ = "Copyright 2019, The Python Project"
+__version__ = "1.0"
+__email__ = "tung.tran.3295@gmail.com"
+__status__ = "Production"
+__doc__ = "A mini tool to get and add Amigo Staff information using OPENPYXL"
+
 import openpyxl
 from openpyxl.styles import Alignment, Font, Border, Side
 
