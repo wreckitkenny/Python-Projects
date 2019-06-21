@@ -7,21 +7,32 @@ __status__ = "Production"
 __doc__ = "A mini tool to get and add Amigo Staff information using OPENPYXL"
 
 # Call modules
-from openpyxl import load_workbook
-from openpyxl.styles import Alignment, Font, Border, Side
+from xlrd import open_workbook
+from xlutils.copy import copy
+from xlwt import easyxf
 
 # File location
-location = "\\\\10.0.8.5\\Public IS\\Danh sach nhan vien Amigo\\Staff list in\
- Amigo June2019.xlsx"
+location = "C:\\Users\\Wreck-it Kenny\\Documents\\Staff list in Amigo\
+ June2019.xls"
 
 # Initial definitions
-wb = load_workbook(location)
-ws = wb['AMG']
-num = ws['A']
-name = ws['B']
-title = ws['C']
-phone = ws['E']
-email = ws['F']
+rb = open_workbook(filename=location, formatting_info=True)
+rs = rb.sheet_by_name('AMG')
+wb = copy(rb)
+ws = wb.get_sheet(1)
+num = rs.col(0)
+name = rs.col(1)
+title = rs.col(2)
+phone = rs.col(4)
+email = rs.col(5)
+
+# Stylist
+style_num = easyxf('alignment: horizontal center, vertical center;'
+                   'font: name Times New Roman, height 240;'
+                   'borders: left thin, right thin, top thin, bottom thin')
+style = easyxf('alignment: vertical center;'
+               'font: name Times New Roman, height 240;'
+               'borders: left thin, right thin, top thin, bottom thin')
 
 
 class Amigo_Staff():
@@ -39,21 +50,19 @@ Email: {email[i].value}
 ==============================""")
                 break
         else:
-            print("Not Found")
+            print("NOT FOUND")
 
     def add_information(self, staff_title, staff_phone, staff_email):
-        self.staff_num = str(num[::-1][0].value + 1)
-        ws.append((self.staff_num, self.staff_name, staff_title, '',
-                   staff_phone, staff_email))
-        for col in ws.columns:
-            aligned_cell = col[-1]
-            aligned_cell.alignment = Alignment(horizontal='center',
-                                               vertical='center')
-            aligned_cell.font = Font(name='Times New Roman', size=12)
-            aligned_cell.border = Border(left=Side(border_style='thin'),
-                                         right=Side(border_style='thin'),
-                                         top=Side(border_style='thin'),
-                                         bottom=Side(border_style='thin'))
+        self.staff_num = int(num[rs.nrows - 1].value) + 1
+        self.staff_title = staff_title
+        self.staff_phone = staff_phone
+        self.staff_email = staff_email
+        ws.write(rs.nrows, 0, self.staff_num, style_num)
+        ws.write(rs.nrows, 1, self.staff_name, style)
+        ws.write(rs.nrows, 2, self.staff_title, style)
+        ws.write(rs.nrows, 3, '', style)
+        ws.write(rs.nrows, 4, self.staff_phone, style)
+        ws.write(rs.nrows, 5, self.staff_email, style)
         wb.save(location)
 
 
@@ -72,7 +81,7 @@ What do you want?
             try:
                 new_name = input("What is name? ")
                 new_title = input("What is title? ")
-                new_phone = int(input("What is phone number? "))
+                new_phone = input("What is phone number? ")
                 new_email = input("What is email? ")
                 ppl = Amigo_Staff(new_name)
                 ppl.add_information(staff_title=new_title,
