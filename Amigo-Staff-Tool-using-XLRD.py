@@ -12,8 +12,8 @@ from xlutils.copy import copy
 from xlwt import easyxf
 
 # File location
-location = "C:\\Users\\Wreck-it Kenny\\Documents\\Staff list in Amigo\
- June2019.xls"
+location = "\\\\10.0.8.5\\Public IS\\Danh sach nhan vien Amigo\\Staff list in\
+ Amigo June2019.xls"
 
 # Initial definitions
 rb = open_workbook(filename=location, formatting_info=True)
