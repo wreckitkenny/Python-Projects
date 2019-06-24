@@ -13,7 +13,7 @@ def main():
     parser.add_argument("location", type=str, help="City or Country. E.g: ho-\
 chi-minh-city")
     args = parser.parse_args()
-    print("""====== Current Date & Time ======
+    print("""====== Current Date & Time =======
 Time: {:%X}""".format(datetime.now()))
     print("Weekday: {:%A}".format(datetime.now()))
     print("Date: {:%d/%m/%Y}".format(datetime.now()))
