@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+__author__ = "Wreck-it Kenny"
+__copyright__ = "Copyright 2019, The Python Project"
+__version__ = "1.0.1"
+__email__ = "tung.tran.3295@gmail.com"
+__status__ = "Production"
+__doc__ = "A mini tool to get and add Amigo Staff information"
+
 from tkinter import *
 from tkinter import filedialog
 from openpyxl import load_workbook
@@ -15,8 +23,6 @@ def get_information():
 || Email: {}\n
 ======================""".format(name[i].value, title[i].value, phone[i].value, email[i].value)
             result_info.set(infor)
-    # else:
-    #     result_info.set('Not Found!!!')
 
 
 def add_information():
@@ -55,11 +61,13 @@ def browse():
     phone = ws['E']
     email = ws['F']
 
+
 def choose():
     if chosen.get() == 1 :
         search_a_staff = Toplevel(root)
         search_a_staff.geometry(newGeometry='300x300')
-        add_a_staff.title(string='Search an existing staff')
+        search_a_staff.title(string='Search an existing staff')
+        search_a_staff.iconbitmap(r'W:/Github/Amigo-Staff-Tool/amigo.ico')
         search_a_staff.resizable(width=False, height=False)
 
         # Frame: SEARCH FIELD
@@ -91,6 +99,7 @@ def choose():
         add_a_staff = Toplevel(root)
         add_a_staff.title(string='Add a new staff')
         # add_a_staff.geometry(newGeometry='300x300')
+        add_a_staff.iconbitmap(r'W:/Github/Amigo-Staff-Tool/amigo.ico')
         add_a_staff.resizable(width=False, height=False)
 
         Label(add_a_staff, text='Name:').grid(row=0, sticky=W, padx=5, pady=5)
@@ -117,9 +126,6 @@ def choose():
         cancel_button = Button(add_a_staff, text='Cancel', width=8, command=add_a_staff.quit)
         cancel_button.grid(row=1, column=2, padx=5)
 
-# def button_state():
-#     if next_button['state'] == DISABLED and filename != '':
-#         next_button['state'] = NORMAL
 
 ## # # # # # # #
 ## Tkinter GUI #
@@ -127,6 +133,7 @@ def choose():
 root = Tk()
 root.title(string='Amigo Staff Tool')
 root.resizable(width=False, height=False)
+root.iconbitmap(r'W:/Github/Amigo-Staff-Tool/amigo.ico')
 
 # # # # # # #
 #  Window 1 #
@@ -158,4 +165,3 @@ frame3.pack(fill=X, padx=2, pady=5)
 #  Window 2 #
 # # # # # # #
 root.mainloop()
-
