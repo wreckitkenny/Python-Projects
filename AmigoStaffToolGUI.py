@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 __author__ = "Wreck-it Kenny"
 __copyright__ = "Copyright 2019, The Python Project"
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 __email__ = "tung.tran.3295@gmail.com"
 __status__ = "Production"
 __doc__ = "A mini tool to get and add Amigo Staff information"
@@ -30,9 +30,7 @@ def add_information():
         ws.append((add_num, add_name.get(), add_title.get(), '', add_phone.get(), add_email.get()))
         for col in ws.columns:
             aligned_cell = col[-1]
-            # aligned_num_cell = col(1)[-1]
             aligned_cell.alignment = Alignment(vertical='center')
-            # aligned_num_cell.alignment = Alignment(horizontal='center', vertical='center')
             aligned_cell.font = Font(name='Times New Roman', size=12)
             aligned_cell.border = Border(left=Side(border_style='thin'),
                                          right=Side(border_style='thin'),
@@ -64,6 +62,9 @@ def browse():
 
 def choose():
     if chosen.get() == 1 :
+        # # # # # # #
+        #  Window 2 #
+        # # # # # # #
         search_a_staff = Toplevel(root)
         search_a_staff.geometry(newGeometry='300x300')
         search_a_staff.title(string='Search an existing staff')
@@ -76,11 +77,11 @@ def choose():
         search_frame = Frame(search_a_staff, borderwidth=1)
 
         search_frame2 = Frame(search_frame, relief=GROOVE, borderwidth=2)
-        search_entry = Entry(search_frame2, width=35, textvariable=search_name).pack(side=LEFT, fill=BOTH, expand=YES, pady=10, padx=5)
-        search_button = Button(search_frame2, text='Search', width=8, command=get_information).pack(side=RIGHT, fill=X, padx=5)
+        Entry(search_frame2, width=35, textvariable=search_name).pack(side=LEFT, fill=BOTH, expand=YES, pady=10, padx=5)
+        Button(search_frame2, text='Search', width=8, command=get_information).pack(side=RIGHT, fill=X, padx=5)
         search_frame2.pack(fill=BOTH, padx=3, pady=10)
 
-        search_label = Label(search_frame, text='Name to search:').place(relx=0.06, rely=0.15, anchor=W)
+        Label(search_frame, text='Name to search:').place(relx=0.06, rely=0.15, anchor=W)
         search_frame.pack(fill=BOTH)
 
         # Frame: SEARCH RESULT
@@ -89,18 +90,20 @@ def choose():
         result_frame = Frame(search_a_staff)
 
         result_frame2 = Frame(result_frame, relief=GROOVE, borderwidth=2)
-        result_message = Message(result_frame2, textvariable=result_info).pack(fill=BOTH, expand=YES)
+        Message(result_frame2, textvariable=result_info).pack(fill=BOTH, expand=YES)
         result_frame2.pack(fill=BOTH, expand=YES, padx=4, pady=5)
 
-        result_label = Label(result_frame, text='Staff Information:').place(relx=0.06, rely=0.015, anchor=W)
+        Label(result_frame, text='Staff Information:').place(relx=0.06, rely=0.015, anchor=W)
         result_frame.pack(fill=BOTH, expand=YES)
 
     if chosen.get() == 2:
+        # # # # # # #
+        #  Window 3 #
+        # # # # # # #
         add_a_staff = Toplevel(root)
         add_a_staff.title(string='Add a new staff')
         # add_a_staff.geometry(newGeometry='300x300')
         add_a_staff.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
-        add_a_staff.iconbitmap()
         add_a_staff.resizable(width=False, height=False)
 
         Label(add_a_staff, text='Name:').grid(row=0, sticky=W, padx=5, pady=5)
@@ -113,19 +116,13 @@ def choose():
         add_title = StringVar()
         add_phone = StringVar()
         add_email = StringVar()
-        add_entry1 = Entry(add_a_staff, width=25, textvariable=add_name)
-        add_entry1.grid(row=0, column=1, padx=5, pady=5)
-        add_entry2 = Entry(add_a_staff, width=25, textvariable=add_title)
-        add_entry2.grid(row=1, column=1, padx=5, pady=5)
-        add_entry3 = Entry(add_a_staff, width=25, textvariable=add_phone)
-        add_entry3.grid(row=2, column=1, padx=5, pady=5)
-        add_entry4 = Entry(add_a_staff, width=25, textvariable=add_email)
-        add_entry4.grid(row=3, column=1, padx=5, pady=5)
+        Entry(add_a_staff, width=25, textvariable=add_name).grid(row=0, column=1, padx=5, pady=5)
+        Entry(add_a_staff, width=25, textvariable=add_title).grid(row=1, column=1, padx=5, pady=5)
+        Entry(add_a_staff, width=25, textvariable=add_phone).grid(row=2, column=1, padx=5, pady=5)
+        Entry(add_a_staff, width=25, textvariable=add_email).grid(row=3, column=1, padx=5, pady=5)
         
-        add_button = Button(add_a_staff, text='Add', width=8, command=add_information)
-        add_button.grid(row=0, column=2, padx=5, pady=5)
-        cancel_button = Button(add_a_staff, text='Cancel', width=8, command=add_a_staff.quit)
-        cancel_button.grid(row=1, column=2, padx=5)
+        Button(add_a_staff, text='Add', width=8, command=add_information).grid(row=0, column=2, padx=5, pady=5)
+        Button(add_a_staff, text='Cancel', width=8, command=add_a_staff.quit).grid(row=1, column=2, padx=5)
 
 
 ## # # # # # # #
@@ -136,23 +133,21 @@ root.title(string='Amigo Staff Tool')
 root.resizable(width=False, height=False)
 root.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
 
-# # # # # # #
-#  Window 1 #
-# # # # # # #
+# # # # # # # # #
+#  Window: Main #
+# # # # # # # # #
 # Frame 1
 filepath = StringVar()
 frame1 = Frame(root, borderwidth=1, relief=FLAT)
-entry = Entry(frame1, textvariable=filepath).pack(side=LEFT, fill=BOTH, expand=YES, padx=3)
-browse_button = Button(frame1, text='Browse', width=8, command=browse).pack(side=RIGHT, padx=3)
+Entry(frame1, textvariable=filepath).pack(side=LEFT, fill=BOTH, expand=YES, padx=3)
+Button(frame1, text='Browse', width=8, command=browse).pack(side=RIGHT, padx=3)
 frame1.pack(fill=X, padx=2, pady=5)
 
 # Frame 2
 chosen = IntVar()
 frame2 = Frame(root, borderwidth=1, relief=FLAT)
-radio_button1 = Radiobutton(frame2, text='Search a staff', value=1, variable=chosen)
-radio_button1.pack(side=LEFT, padx=30)
-radio_button2 = Radiobutton(frame2, text='Add a staff', value=2, variable=chosen)
-radio_button2.pack(side=LEFT, padx=30)
+Radiobutton(frame2, text='Search a staff', value=1, variable=chosen).pack(side=LEFT, padx=30)
+Radiobutton(frame2, text='Add a staff', value=2, variable=chosen).pack(side=LEFT, padx=30)
 frame2.pack(fill=X, padx=2)
 
 # Frame 3
@@ -161,8 +156,4 @@ next_button = Button(frame3, text='Next', width=8, state=DISABLED, command=choos
 next_button.pack(side=RIGHT, padx=3)
 frame3.pack(fill=X, padx=2, pady=5)
 
-
-# # # # # # #
-#  Window 2 #
-# # # # # # #
 root.mainloop()
