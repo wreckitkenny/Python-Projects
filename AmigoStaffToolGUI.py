@@ -67,7 +67,7 @@ def choose():
         search_a_staff = Toplevel(root)
         search_a_staff.geometry(newGeometry='300x300')
         search_a_staff.title(string='Search an existing staff')
-        search_a_staff.iconbitmap(r'W:/Github/Amigo-Staff-Tool/amigo.ico')
+        search_a_staff.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
         search_a_staff.resizable(width=False, height=False)
 
         # Frame: SEARCH FIELD
@@ -99,7 +99,8 @@ def choose():
         add_a_staff = Toplevel(root)
         add_a_staff.title(string='Add a new staff')
         # add_a_staff.geometry(newGeometry='300x300')
-        add_a_staff.iconbitmap(r'W:/Github/Amigo-Staff-Tool/amigo.ico')
+        add_a_staff.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
+        add_a_staff.iconbitmap()
         add_a_staff.resizable(width=False, height=False)
 
         Label(add_a_staff, text='Name:').grid(row=0, sticky=W, padx=5, pady=5)
@@ -133,7 +134,7 @@ def choose():
 root = Tk()
 root.title(string='Amigo Staff Tool')
 root.resizable(width=False, height=False)
-root.iconbitmap(r'W:/Github/Amigo-Staff-Tool/amigo.ico')
+root.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
 
 # # # # # # #
 #  Window 1 #
