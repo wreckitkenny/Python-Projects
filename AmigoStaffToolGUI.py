@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 __author__ = "Wreck-it Kenny"
 __copyright__ = "Copyright 2019, The Python Project"
-__version__ = "1.0.2"
+__version__ = "1.1"
 __email__ = "tung.tran.3295@gmail.com"
 __status__ = "Production"
 __doc__ = "A mini tool to get and add Amigo Staff information"
@@ -21,7 +21,7 @@ class initialPage():
         self.master = master
         self.master.title(string='Amigo Staff Tool')
         self.master.resizable(width=False, height=False)
-        # self.master.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
+        self.master.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
         self.frame_1()
         self.frame_2()
         self.frame_3()
@@ -48,7 +48,7 @@ class initialPage():
     def frame_3(self):
         global next_button
         frame = Frame(self.master, borderwidth=1, relief=FLAT)
-        next_button = Button(frame, text='Next', width=8, state=NORMAL, command=choose)
+        next_button = Button(frame, text='Next', width=8, state=DISABLED, command=choose)
         next_button.pack(side=RIGHT, padx=3)
         frame.pack(fill=X, padx=2, pady=5)
 
@@ -99,7 +99,6 @@ class AddPage():
     def __init__(self):
         self.master = Toplevel(root)
         self.master.title(string='Add a new staff')
-        # add_a_staff.geometry(newGeometry='300x300')
         self.master.iconbitmap(r'C:/Program Files/Amigo/Amigo Staff Tool/amigo.ico')
         self.master.resizable(width=False, height=False)
         self.add()
@@ -125,7 +124,7 @@ class AddPage():
 class Done():
     def __init__(self):
         self.done = Tk()
-        # self.root.resizable(width=False, height=False)
+        self.done.resizable(width=False, height=False)
         self.end()
         self.done.mainloop()
 
